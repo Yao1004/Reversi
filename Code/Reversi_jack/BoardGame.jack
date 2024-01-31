@@ -1,0 +1,322 @@
+class BoardGame
+{
+    field Board ReversiBoard;
+    field Scoreboard scoreboard;
+    field Select select;
+
+	field int blackAvailable;
+	field int whiteAvailable;
+
+    constructor BoardGame new ()
+    {
+        let ReversiBoard = Board.new();
+        let scoreboard = Scoreboard.new();
+        let select = Select.new();
+		let blackAvailable = 0;
+		let whiteAvailable = 0;
+        return this;
+    }
+    function boolean in(int X , int Y)
+	{
+		var boolean IFin;
+		let IFin = ( (~X<0) & (X<8) & (~Y<0) & (Y<8) );
+		return IFin;
+	}
+    method void initGame ()
+    {
+        do ReversiBoard.setWeight(0,0,57); do ReversiBoard.setWeight(0,1,6); do ReversiBoard.setWeight(0,2,50); do ReversiBoard.setWeight(0,3,41);
+        do ReversiBoard.setWeight(0,4,42); do ReversiBoard.setWeight(0,5,51); do ReversiBoard.setWeight(0,6,8); do ReversiBoard.setWeight(0,7,58);
+
+        do ReversiBoard.setWeight(1,0,5); do ReversiBoard.setWeight(1,1,1); do ReversiBoard.setWeight(1,2,33); do ReversiBoard.setWeight(1,3,25);
+        do ReversiBoard.setWeight(1,4,26); do ReversiBoard.setWeight(1,5,34); do ReversiBoard.setWeight(1,6,2); do ReversiBoard.setWeight(1,7,7);
+
+        do ReversiBoard.setWeight(2,0,49); do ReversiBoard.setWeight(2,1,40); do ReversiBoard.setWeight(2,2,21); do ReversiBoard.setWeight(2,3,13);
+        do ReversiBoard.setWeight(2,4,14); do ReversiBoard.setWeight(2,5,22); do ReversiBoard.setWeight(2,6,35); do ReversiBoard.setWeight(2,7,52);
+
+        do ReversiBoard.setWeight(3,0,48); do ReversiBoard.setWeight(3,1,32); do ReversiBoard.setWeight(3,2,20); do ReversiBoard.setWeight(3,3,0);
+        do ReversiBoard.setWeight(3,4,0); do ReversiBoard.setWeight(3,5,15); do ReversiBoard.setWeight(3,6,27); do ReversiBoard.setWeight(3,7,43);
+
+        do ReversiBoard.setWeight(4,0,47); do ReversiBoard.setWeight(4,1,31); do ReversiBoard.setWeight(4,2,19); do ReversiBoard.setWeight(4,3,0);
+        do ReversiBoard.setWeight(4,4,0); do ReversiBoard.setWeight(4,5,16); do ReversiBoard.setWeight(4,6,28); do ReversiBoard.setWeight(4,7,44);
+
+        do ReversiBoard.setWeight(5,0,56); do ReversiBoard.setWeight(5,1,39); do ReversiBoard.setWeight(5,2,24); do ReversiBoard.setWeight(5,3,18);
+        do ReversiBoard.setWeight(5,4,17); do ReversiBoard.setWeight(5,5,23); do ReversiBoard.setWeight(5,6,36); do ReversiBoard.setWeight(5,7,53);
+
+        do ReversiBoard.setWeight(6,0,9); do ReversiBoard.setWeight(6,1,3); do ReversiBoard.setWeight(6,2,38); do ReversiBoard.setWeight(6,3,30);
+        do ReversiBoard.setWeight(6,4,29); do ReversiBoard.setWeight(6,5,37); do ReversiBoard.setWeight(6,6,4); do ReversiBoard.setWeight(6,7,11);
+
+        do ReversiBoard.setWeight(7,0,59); do ReversiBoard.setWeight(7,1,10); do ReversiBoard.setWeight(7,2,55); do ReversiBoard.setWeight(7,3,46);
+        do ReversiBoard.setWeight(7,4,45); do ReversiBoard.setWeight(7,5,54); do ReversiBoard.setWeight(7,6,12); do ReversiBoard.setWeight(7,7,60);
+        return;
+    }
+    method void setChessman(int putx,int puty ,int turn)
+    {
+        do ReversiBoard.putting(putx,puty,turn);        
+        return;
+    }
+    method void setAvailable(int turn)
+	{
+        var Array dirx;
+        var Array diry;
+        var int dir;
+		var int i , j;
+        var int X , Y;
+		var Grid tmpGrid;
+
+        let dirx = Array.new(8); 
+        let dirx[0] = 0 ; let dirx[1] = -1 ; let dirx[2] = -1 ; let dirx[3] = -1 ;
+        let dirx[4] = 0 ; let dirx[5] = 1 ; let dirx[6] = 1 ; let dirx[7] = 1 ;
+
+        let diry = Array.new(8);
+        let diry[0] = 1 ; let diry[1] = 1 ; let diry[2] = 0 ; let diry[3] = -1 ;
+        let diry[4] = -1 ; let diry[5] = -1 ; let diry[6] = 0 ; let diry[7] = 1 ;
+
+        let X = 0;
+        while(X < 8)
+        {
+            let Y = 0 ;
+            while(Y < 8)
+            {
+                do ReversiBoard.makeGridUnavailable(X,Y);
+                let Y = Y + 1;
+            }
+            let X = X + 1;
+        }
+
+        let blackAvailable = 0;
+        let whiteAvailable = 0;
+
+		let X = 0;
+        while(X < 8)
+        {
+            let Y = 0 ;
+            while(Y < 8)
+            {
+                let tmpGrid = ReversiBoard.getGrid(X,Y);
+                
+                if( (tmpGrid.status()) = (turn) )
+                {
+                    let dir = 0;
+                    while(dir < 8)
+                    {
+                        let i = X + dirx[dir];
+                        let j = Y + diry[dir];
+                        if( BoardGame.in(i,j) )
+                        {
+                            let tmpGrid = ReversiBoard.getGrid(i,j);
+                            if( tmpGrid.status() = (-turn) )
+                            {
+                                while( ( BoardGame.in(i,j) ) & (tmpGrid.status() = (-turn)) )
+                                {
+                                    let i = i + dirx[dir];
+                                    let j = j + diry[dir];
+                                    if(BoardGame.in(i,j))
+                                    {
+                                        let tmpGrid = ReversiBoard.getGrid(i,j);
+                                    }
+                                }
+                                if(BoardGame.in(i,j))
+                                {
+                                    if( tmpGrid.status() = 0 )
+                                    {
+                                        do ReversiBoard.makeGridAvailable(i,j,tmpGrid);
+                                        if(turn = 1)
+                                        {
+                                            let whiteAvailable = whiteAvailable + 1 ;
+                                        }
+                                        if(turn = -1)
+                                        {
+                                            let blackAvailable = blackAvailable + 1 ;
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                        let dir = dir + 1;
+                    }
+                }
+                let Y = Y + 1 ;
+            }
+            let X = X + 1;
+        }
+        do dirx.dispose();
+        do diry.dispose();
+		return;
+	}
+ 
+    method void changeChessman(int X , int Y ,int turn)
+	{
+        var Array dirx;
+        var Array diry;
+        var int dir;
+		var int i,j;
+		var Grid tmpGrid;
+
+        let dirx = Array.new(8); 
+        let dirx[0] = 0 ; let dirx[1] = -1 ; let dirx[2] = -1 ; let dirx[3] = -1 ;
+        let dirx[4] = 0 ; let dirx[5] = 1 ; let dirx[6] = 1 ; let dirx[7] = 1 ;
+
+        let diry = Array.new(8);
+        let diry[0] = 1 ; let diry[1] = 1 ; let diry[2] = 0 ; let diry[3] = -1 ;
+        let diry[4] = -1 ; let diry[5] = -1 ; let diry[6] = 0 ; let diry[7] = 1 ;
+
+        let dir = 0;
+        while(dir < 8)
+        {
+            let i = X + dirx[dir];
+            let j = Y + diry[dir];
+            if(BoardGame.in(i,j))
+            {
+                let tmpGrid = ReversiBoard.getGrid(i,j);
+                if( (tmpGrid.status()) = (-turn) )
+                {
+                    while( ( BoardGame.in(i,j) ) & (tmpGrid.status() = (-turn)) )
+                    {
+                        let i = i + dirx[dir];
+                        let j = j + diry[dir];
+                        if(BoardGame.in(i,j))
+                        {
+                            let tmpGrid = ReversiBoard.getGrid(i,j);
+                        }
+                    }
+                    if(BoardGame.in(i,j))
+                    {
+                        if( tmpGrid.status() = turn )
+                        {
+                            let i = i-dirx[dir];
+                            let j = j-diry[dir];
+                            while( ~( (i=X) & (j=Y) ) )
+                            {
+                                do ReversiBoard.changing(i,j);
+                                let i = i-dirx[dir];
+                                let j = j-diry[dir];
+                            }
+                        }
+                    }
+                } 
+            }
+            let dir = dir + 1;
+        }
+        do dirx.dispose();
+        do diry.dispose();
+		return;
+	}
+
+    method void count_score()
+    {
+        var int X,Y;
+        var int b_score,w_score;
+        var Grid tmpGrid;
+        let b_score = 0;
+        let w_score = 0;
+        let X = 0;
+        
+        while(X<8)
+        {
+            let Y = 0; 
+            while(Y < 8)
+            {
+                let tmpGrid = ReversiBoard.getGrid(X,Y);
+                if( (tmpGrid.status()) = 1)
+                {
+                    let w_score = w_score + 1;
+                }
+                if( (tmpGrid.status()) = (-1))
+                {
+                    let b_score = b_score + 1;
+                }
+                let Y = Y + 1; 
+            }
+            let X = X + 1;
+        }
+        
+        do scoreboard.changeScore(b_score,w_score);
+        return;
+    }
+
+    method int AI ()
+    {
+        var int maxWeight;
+        var int tmpWeight;
+        var int i,j;
+        var int x,y;
+        var Grid tmpGrid;
+        let maxWeight = 0;
+        let i = 0;
+        let x = 0;
+        let y = 0;
+        while(i < 8)
+        {
+            let j = 0;
+            while(j < 8)
+            {
+                let tmpGrid = ReversiBoard.getGrid(i,j);
+                let tmpWeight = ( (tmpGrid.weight()) * (-(tmpGrid.available())) );
+                if(maxWeight < tmpWeight)
+                {
+                    let maxWeight = tmpWeight;
+                    let x = i;
+                    let y = j;
+                }
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        return ((8*x) + y) ;
+    }
+
+    method void printGame(int turn,int mode)
+    {
+        do ReversiBoard.printBoard(turn);
+        do scoreboard.print_scoreBoard(turn,mode);
+        do select.printSelect();
+        return;
+    }
+    method int blackAvailable()
+    {
+        return blackAvailable;
+    }
+	method int whiteAvailable()
+    {
+        return whiteAvailable;
+    }
+    method Grid readGrid(int x,int y)
+    {
+        return ReversiBoard.getGrid(x,y);
+    }
+    method Grid readBlack(int x,int y)
+    {
+        return scoreboard.black_score();
+    }
+    method Grid readWhite(int x,int y)
+    {
+        return scoreboard.white_score();
+    }
+    method Select readSelect()
+    {
+        return select;
+    }
+    method void writeSelect(Select input)
+    {
+        let select = input;
+        return;
+    }
+    method int getX()
+    {
+        return select.readX();
+    }
+    method int getY()
+    {
+        return select.readY();
+    }
+    method void setCoordinate(int x,int y)
+    {
+        do select.changeCoordinate(x,y);
+        return;
+    }
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

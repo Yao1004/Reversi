@@ -1,0 +1,139 @@
+class Board
+{
+    field Array board;
+	
+    constructor Board new ()
+    {
+		var int X,Y;
+		var Array row;
+		let board = Array.new(8);
+		let X = 0;
+		while(X < 8)
+		{
+			let Y = 0;
+			let board[X] = Array.new(8);
+			let row = board[X];
+			while(Y < 8)
+			{
+				let row[Y] = Grid.new();
+				let Y = Y + 1;
+			}
+			let board[X] = row;
+			let X = X + 1;
+		}
+        return this;
+    }
+	
+	method void printBoard(int turn)
+	{
+		var int X,Y;
+		var Grid tmpGrid;
+		var Array tmpRow;
+		do Draw.printLines();
+		let X = 0;
+		while(X < 8)
+		{
+			let tmpRow = board[X];
+			let Y = 0;
+			while(Y < 8)
+			{
+				let tmpGrid = tmpRow[Y];
+				if(tmpGrid.status() = 1)
+				{
+					do Draw.place_white(X,Y);
+				}
+				if(tmpGrid.status() = -1)
+				{
+					do Draw.place_black(X,Y);
+				}
+				if( (tmpGrid.available() = true) & (tmpGrid.status() = 0) & (turn = 1))
+				{
+					do Draw.draw_white_available(X,Y);
+				}
+				if( (tmpGrid.available() = true) & (tmpGrid.status() = 0) & (turn = -1))
+				{
+					do Draw.draw_black_available(X,Y);
+				}
+				let Y = Y + 1;
+			}
+			let X = X + 1;
+		}
+		return;
+	}
+	method Grid getGrid(int X , int Y)
+	{
+		var Array tmpRow;
+		var Grid tmpGrid;
+		let tmpRow = board[X];
+		let tmpGrid = tmpRow[Y];
+		return tmpGrid;
+	}
+	method void putGrid(int X , int Y , Grid grid)
+	{
+		var Array tmpRow;
+		let tmpRow = board[X];
+		let tmpRow[Y] = grid;
+		let board[X] = tmpRow;
+		return;
+	}
+	method void putting(int X,int Y,int turn)
+    {
+        var Array tmpRow;
+		var Grid tmpGrid;
+		let tmpRow = board[X];
+		let tmpGrid = tmpRow[Y];
+		do tmpGrid.place(turn);
+		let tmpRow[Y] = tmpGrid;
+		let board[X] = tmpRow;
+        return;
+    }
+	method void changing(int X,int Y)
+    {
+        var Array tmpRow;
+		var Grid tmpGrid;
+		let tmpRow = board[X];
+		let tmpGrid = tmpRow[Y];
+		do tmpGrid.reverse();
+		let tmpRow[Y] = tmpGrid;
+		let board[X] = tmpRow;
+        return;
+    }
+	method void makeGridAvailable(int X,int Y)
+    {
+        var Array tmpRow;
+		var Grid tmpGrid;
+		let tmpRow = board[X];
+		let tmpGrid = tmpRow[Y];
+		do tmpGrid.makeAvailable();
+		let tmpRow[Y] = tmpGrid;
+		let board[X] = tmpRow;
+        return;
+    }
+	method void makeGridUnavailable(int X,int Y)
+    {
+        var Array tmpRow;
+		var Grid tmpGrid;
+		let tmpRow = board[X];
+		let tmpGrid = tmpRow[Y];
+		do tmpGrid.makeUnavailable();
+		let tmpRow[Y] = tmpGrid;
+		let board[X] = tmpRow;
+        return;
+    }
+	method void setWeight(int X , int Y,int w)
+	{
+		var Array tmpRow;
+		var Grid tmpGrid;
+		let tmpRow = board[X];
+		let tmpGrid = tmpRow[Y];
+		do tmpGrid.writeWeight(w);
+		let tmpRow[Y] = tmpGrid;
+		let board[X] = tmpRow;
+		return;
+	}
+	method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

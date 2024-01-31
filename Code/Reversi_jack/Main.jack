@@ -1,0 +1,337 @@
+class Main 
+{	
+	static BoardGame game;
+	function void print_choice_and_title() // 1 for single , -1 for two
+	{
+		do Output.moveCursor(7,28);  //Reversi
+
+		do Output.printChar(82);
+		do Output.printChar(101);
+		do Output.printChar(118);
+		do Output.printChar(101);
+		do Output.printChar(114);
+		do Output.printChar(115);
+		do Output.printChar(105);
+
+		do Output.moveCursor(11,13);  //Choose the mode which you want to play.
+
+		do Output.printChar(67);
+		do Output.printChar(104);
+		do Output.printChar(111);
+		do Output.printChar(111);
+		do Output.printChar(115);
+		do Output.printChar(101);
+		do Output.printChar(32);
+		do Output.printChar(116);
+		do Output.printChar(104);
+		do Output.printChar(101);
+		do Output.printChar(32);
+		do Output.printChar(109);
+		do Output.printChar(111);
+		do Output.printChar(100);
+		do Output.printChar(101);
+		do Output.printChar(32);
+		do Output.printChar(119);
+		do Output.printChar(104);
+		do Output.printChar(105);
+		do Output.printChar(99);
+		do Output.printChar(104);
+		do Output.printChar(32);
+		do Output.printChar(121);
+		do Output.printChar(111);
+		do Output.printChar(117);
+		do Output.printChar(32);
+		do Output.printChar(119);
+		do Output.printChar(97);
+		do Output.printChar(110);
+		do Output.printChar(116);
+		do Output.printChar(32);
+		do Output.printChar(116);
+		do Output.printChar(111);
+		do Output.printChar(32);
+		do Output.printChar(112);
+		do Output.printChar(108);
+		do Output.printChar(97);
+		do Output.printChar(121);
+		do Output.printChar(46);
+		
+		do Output.moveCursor(15,15); //One player
+		
+		do Output.printChar(79);
+		do Output.printChar(110);
+		do Output.printChar(101);
+		do Output.printChar(32);
+		do Output.printChar(112);
+		do Output.printChar(97);
+		do Output.printChar(108);
+		do Output.printChar(121);
+		do Output.printChar(101);
+		do Output.printChar(114);
+
+		do Output.moveCursor(15,37); //Two players
+		
+		do Output.printChar(84);
+		do Output.printChar(119);
+		do Output.printChar(111);
+		do Output.printChar(32);
+		do Output.printChar(112);
+		do Output.printChar(108);
+		do Output.printChar(97);
+		do Output.printChar(121);
+		do Output.printChar(101);
+		do Output.printChar(114);
+		do Output.printChar(115);
+
+		do Screen.drawRectangle(205,78,210,86);
+		do Output.moveCursor(7,36);
+		return;    
+	}
+
+	function int select_mode()
+	{
+		var int pressed,mode;
+		let mode = -1;
+		do Screen.drawRectangle(117,163,202,179);
+		do Main.print_choice_and_title();
+		let pressed = 130;
+		while( ~(pressed = 128) )
+		{
+			do Screen.clearScreen();
+			if( (pressed = 130) | (pressed = 132) )
+			{
+				let mode = mode * (-1);			
+			}
+			if(mode = 1)
+			{
+				do Screen.drawRectangle(117,163,202,179);
+			}
+			if(mode = -1)
+			{
+				do Screen.drawRectangle(292,163,386,179);
+			}	
+			do Main.print_choice_and_title();
+			let pressed = Keyboard.readChar();
+		}
+		return mode;
+	}
+
+	function void printWin(int w,int mode)
+	{
+		do Output.moveCursor(20,40);
+		if((w = 1) & (mode = -1))	//W win
+		{
+			do Output.printChar(87);
+			do Output.printChar(104);
+			do Output.printChar(105);
+			do Output.printChar(116);
+			do Output.printChar(101);
+			do Output.printChar(32);
+			do Output.printChar(119);
+			do Output.printChar(105);
+			do Output.printChar(110);
+			do Output.printChar(115);
+			do Output.printChar(33);
+		}
+		if((w = -1) & (mode = -1))  //B win
+		{
+			do Output.printChar(66);
+			do Output.printChar(108);
+			do Output.printChar(97);
+			do Output.printChar(99);
+			do Output.printChar(107);
+			do Output.printChar(32);
+			do Output.printChar(119);
+			do Output.printChar(105);
+			do Output.printChar(110);
+			do Output.printChar(115);
+			do Output.printChar(33);
+		}
+		if(w = 0) // Draw
+		{
+			do Output.printChar(68);
+			do Output.printChar(114);
+			do Output.printChar(97);
+			do Output.printChar(119);
+		}
+		if((w = -1) & (mode = 1)) // U win.
+		{
+			do Output.printChar(89);
+			do Output.printChar(111);
+			do Output.printChar(117);
+			do Output.printChar(32);
+			do Output.printChar(119);
+			do Output.printChar(105);
+			do Output.printChar(110);
+			do Output.printChar(33);
+		}
+		if((w = 1) & (mode = 1)) //C win.
+		{
+			do Output.printChar(67);
+			do Output.printChar(111);
+			do Output.printChar(109);
+			do Output.printChar(112);
+			do Output.printChar(117);
+			do Output.printChar(116);
+			do Output.printChar(101);
+			do Output.printChar(114);
+			do Output.printChar(32);
+			do Output.printChar(119);
+			do Output.printChar(105);
+			do Output.printChar(110);
+			do Output.printChar(115);
+			do Output.printChar(33);
+		}
+		return ; 
+	}
+	function boolean valid(int x,int y)
+	{
+		var boolean val;
+		var Grid tmpGrid;
+		let val = true;
+		if(val)
+		{
+			let tmpGrid =  game.readGrid(x,y);
+			if( (~((tmpGrid.status()) = 0)) | (~(tmpGrid.available())) )
+			{
+				let val = false;
+			}
+		}
+		return val;
+	}
+	function boolean endGame()
+	{
+		var boolean end;
+		var int black,white;
+		let black = game.readBlack();
+		let white = game.readWhite();
+		let end = false;
+		if( (black = 0) | (white = 0) | ((black + white) = 64) )
+		{
+			let end = true;
+		}
+		return end;
+	}
+	function void readCoordinate(int turn,int mode)
+	{
+		var Select tmpSelect;
+		var int pressed;
+		let tmpSelect = game.readSelect();
+		let pressed = 0;
+		while( ~(pressed = 128) )
+		{
+			do Screen.clearScreen();
+			do game.printGame(turn,mode);
+			let pressed = Keyboard.readChar();
+			if(pressed = 130)
+			{
+				do tmpSelect.moveLeft();
+			}
+			if(pressed = 131)
+			{
+				do tmpSelect.moveUp();
+			}
+			if(pressed = 132)
+			{
+				do tmpSelect.moveRight();
+			}
+			if(pressed = 133)
+			{
+				do tmpSelect.moveDown();
+			}
+		}
+		do game.writeSelect(tmpSelect);
+		return;
+	}
+
+	function void main()
+	{
+		// init
+		var int mode;
+		var int x,y,turn;
+		var int black,white;
+		var int coor;
+		let turn = (-1);
+		let game = BoardGame.new();
+		let mode = Main.select_mode();
+		do game.initGame();
+		do game.setChessman(3,3,1);
+		do game.setChessman(3,4,-1);
+		do game.setChessman(4,4,1);
+		do game.setChessman(4,3,-1);
+		do game.count_score();
+		do Screen.clearScreen();
+		do game.printGame(turn,mode);
+		//game running
+		while( ~(Main.endGame()) )
+		{
+			do game.setAvailable(turn);
+			if( (turn = 1) & (game.whiteAvailable() = 0) )
+			{
+				let turn = (-1);
+				do game.setAvailable(-1);
+			}
+			if( (turn = -1) & (game.blackAvailable() = 0) )
+			{
+				let turn = 1;
+				do game.setAvailable(1);
+			}
+
+			do Screen.clearScreen();
+			do game.printGame(turn,mode);
+
+			if( (mode = 1) & (turn = 1))
+			{
+				do Sys.wait(1000);
+			}
+
+			let x = (-1);
+			let y = (-1);
+
+			if( (turn = 1) & (mode = 1))
+			{
+				let coor = game.AI();
+				let x = ( coor / 8 );
+				let y = ( (coor) - (8*x) );
+				do game.setCoordinate(x,y);
+				do game.printGame(turn,mode);
+			}
+			else
+			{
+				while( ~(Main.valid(x,y)) )
+				{
+					do Main.readCoordinate(turn,mode);
+					let x = game.getX();
+					let y = game.getY();
+					do Screen.clearScreen();
+					do game.printGame(turn,mode);
+				}
+			}
+
+			do game.setChessman(x,y,turn);
+			do game.changeChessman(x,y,turn);
+
+			let turn = turn*(-1);
+
+			do game.count_score();
+			do Screen.clearScreen();
+
+			do game.printGame(turn,mode);
+		}
+		let black = game.readBlack();
+		let white = game.readWhite();
+		if(black > white)
+		{
+			do Main.printWin(-1,mode);
+		}
+		if(black < white)
+		{
+			do Main.printWin(1,mode);
+		}
+		if(black = white)
+		{
+			do Main.printWin(0,mode);
+		}
+		do game.dispose();
+		return;
+	}
+}

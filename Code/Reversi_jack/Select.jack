@@ -1,0 +1,72 @@
+class Select
+{
+    field int x;
+    field int y;
+    constructor Select new()
+    {
+        let x = 0;
+        let y = 0;
+        return this;
+    }
+    method void printSelect()
+    {
+        do Draw.draw_select(x,y);
+        return;
+    }
+    method void moveUp()
+    {
+        let x = x - 1 ;
+        if(x < 0)
+        {
+            let x = 7;
+        }
+        return;
+    }
+    method void moveDown()
+    {
+        let x = x + 1 ;
+        if(x > 7)
+        {
+            let x = 0;
+        }
+        return;
+    }
+    method void moveLeft()
+    {
+        let y = y - 1 ;
+        if(y < 0)
+        {
+            let y = 7;
+        }
+        return;
+    }
+    method void moveRight()
+    {
+        let y = y + 1 ;
+        if(y > 7)
+        {
+            let y = 0;
+        }
+        return;
+    }
+    method void changeCoordinate(int X,int Y)
+    {
+        let x = X ;
+        let y = Y ;
+        return;
+    }
+    method int readX()
+    {
+        return x;
+    }
+    method int readY()
+    {
+        return y;
+    }
+    method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+    
+}

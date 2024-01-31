@@ -1,0 +1,128 @@
+class Scoreboard
+{
+	field int black_score;
+	field int white_score;
+	constructor Scoreboard new()
+	{
+		let black_score = 2;
+		let white_score = 2;
+		return this;
+	}
+	method void changeScore(int b,int w)
+	{
+		let black_score = b;
+		let white_score = w;
+		return ;
+	}
+  	method void print_scoreBoard(int turn,int mode)
+  	{
+		do Output.moveCursor(9,34);
+		do Output.printChar(66);
+		do Output.moveCursor(9,36);
+		do Output.printInt(black_score);
+
+		do Output.moveCursor(12,34);
+		do Output.printChar(87);
+		do Output.moveCursor(12,36);
+		do Output.printInt(white_score);
+		do Output.moveCursor(16,40);
+		if((turn = 1) & (mode = -1)) //
+		{
+			do Output.printChar(73);
+			do Output.printChar(116);
+			do Output.printChar(39);
+			do Output.printChar(115);
+			do Output.printChar(32);
+			do Output.printChar(87);
+			do Output.printChar(104);
+			do Output.printChar(105);
+			do Output.printChar(116);
+			do Output.printChar(101);
+			do Output.printChar(39);
+			do Output.printChar(115);
+			do Output.printChar(32);
+			do Output.printChar(116);
+			do Output.printChar(117);
+			do Output.printChar(114);
+			do Output.printChar(110);
+			do Output.printChar(46);
+		}
+		if((turn = -1) & (mode = -1))
+		{
+			do Output.printChar(73);
+			do Output.printChar(116);
+			do Output.printChar(39);
+			do Output.printChar(115);
+			do Output.printChar(32);
+			do Output.printChar(66);
+			do Output.printChar(108);
+			do Output.printChar(97);
+			do Output.printChar(99);
+			do Output.printChar(107);
+			do Output.printChar(39);
+			do Output.printChar(115);
+			do Output.printChar(32);
+			do Output.printChar(116);
+			do Output.printChar(117);
+			do Output.printChar(114);
+			do Output.printChar(110);
+			do Output.printChar(46);
+		}
+		if((turn = 1) & (mode = 1))
+		{
+			do Output.printChar(73);
+			do Output.printChar(116);
+			do Output.printChar(39);
+			do Output.printChar(115);
+			do Output.printChar(32);
+			do Output.printChar(67);
+			do Output.printChar(111);
+			do Output.printChar(109);
+			do Output.printChar(112);
+			do Output.printChar(117);
+			do Output.printChar(116);
+			do Output.printChar(101);
+			do Output.printChar(114);
+			do Output.printChar(39);
+			do Output.printChar(115);
+			do Output.printChar(32);
+			do Output.printChar(116);
+			do Output.printChar(117);
+			do Output.printChar(114);
+			do Output.printChar(110);
+			do Output.printChar(46);
+		}
+		if((turn = -1) & (mode = 1))
+		{
+			do Output.printChar(73);
+			do Output.printChar(116);
+			do Output.printChar(39);
+			do Output.printChar(115);
+			do Output.printChar(32);
+			do Output.printChar(121);
+			do Output.printChar(111);
+			do Output.printChar(117);
+			do Output.printChar(114);
+			do Output.printChar(32);
+			do Output.printChar(116);
+			do Output.printChar(117);
+			do Output.printChar(114);
+			do Output.printChar(110);
+			do Output.printChar(46);
+		}
+		return ;
+	}
+	method int black_score()
+	{
+		return black_score;
+	}
+	method int white_score()
+	{
+		return white_score;
+	}
+	method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

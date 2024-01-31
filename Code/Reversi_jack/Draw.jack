@@ -1,0 +1,80 @@
+class Draw
+{
+  function int transform_into_real_coordinate(int x)
+  {
+    var int tem;
+    let tem = ((x*31)+16);
+    return tem;
+  }
+  function void place_black(int x,int y)
+  {
+    var int tem1,tem2;
+    let tem1 = Draw.transform_into_real_coordinate(y);
+    let tem2 = Draw.transform_into_real_coordinate(x);
+    do Screen.drawCircle(tem1,tem2,10);
+    return;
+  }
+
+  function void place_white(int x,int y)
+  {
+    var int tem1,tem2;
+    let tem1 = Draw.transform_into_real_coordinate(y);
+    let tem2 = Draw.transform_into_real_coordinate(x);
+    do Screen.drawCircle(tem1,tem2,10);
+    do Screen.setColor(false);
+    do Screen.drawCircle(tem1,tem2,8);
+    do Screen.setColor(true);
+    return;
+  }
+  function void printLines()
+	{
+		var int i,j;
+		let i = 1;
+		let j = 1;
+		do Screen.drawRectangle(0,0,249,1);//up
+		do Screen.drawRectangle(0,248,249,249);//down
+		do Screen.drawRectangle(0,0,1,249);//left
+		do Screen.drawRectangle(248,0,249,249);//right
+		while(i<8)
+		{
+			do Screen.drawRectangle(0,i*31,249,(i*31)+1);
+			let i = i + 1;
+		}
+		while(j<8)
+		{
+			do Screen.drawRectangle(j*31,0,(j*31)+1,249);
+			let j = j + 1;
+		}
+		return;
+  }
+  function void draw_black_available(int x,int y) 
+  {
+    var int i,j;
+    let i = Draw.transform_into_real_coordinate(y);
+    let j = Draw.transform_into_real_coordinate(x);
+    do Screen.drawCircle(i,j,3);
+    return ;
+  }
+  function void draw_white_available(int x,int y) 
+  {
+    var int i,j;
+    let i = Draw.transform_into_real_coordinate(y);
+    let j = Draw.transform_into_real_coordinate(x);
+    do Screen.drawCircle(i,j,3);
+    do Screen.setColor(false);
+    do Screen.drawCircle(i,j,1);
+    do Screen.setColor(true);
+    return ;
+  }
+  function void draw_select(int i,int j)
+  {
+    var int x,y;
+    let x = Draw.transform_into_real_coordinate(j);
+    let y = Draw.transform_into_real_coordinate(i);
+    do Screen.drawRectangle(x-16 , y-16 , x+16 , y-13); // up
+    do Screen.drawRectangle(x-16 , y+13 , x+16 , y+16); // down
+    do Screen.drawRectangle(x-16 , y-16 , x-13 , y+16); // left
+    do Screen.drawRectangle(x+13 , y-16 , x+16 , y+16); // right
+    return;
+  }
+}

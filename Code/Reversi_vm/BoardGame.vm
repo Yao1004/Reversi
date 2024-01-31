@@ -1,0 +1,1341 @@
+function BoardGame.new 0
+push constant 5
+call Memory.alloc 1
+pop pointer 0
+call Board.new 0
+pop this 0
+call Scoreboard.new 0
+pop this 1
+call Select.new 0
+pop this 2
+push constant 0
+pop this 3
+push constant 0
+pop this 4
+push pointer 0
+return
+function BoardGame.in 1
+push argument 0
+not
+push constant 0
+lt
+push argument 0
+push constant 8
+lt
+and
+push argument 1
+not
+push constant 0
+lt
+and
+push argument 1
+push constant 8
+lt
+and
+pop local 0
+push local 0
+return
+function BoardGame.initGame 0
+push argument 0
+pop pointer 0
+push this 0
+push constant 0
+push constant 0
+push constant 57
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 0
+push constant 1
+push constant 6
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 0
+push constant 2
+push constant 50
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 0
+push constant 3
+push constant 41
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 0
+push constant 4
+push constant 42
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 0
+push constant 5
+push constant 51
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 0
+push constant 6
+push constant 8
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 0
+push constant 7
+push constant 58
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 0
+push constant 5
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 1
+push constant 1
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 2
+push constant 33
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 3
+push constant 25
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 4
+push constant 26
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 5
+push constant 34
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 6
+push constant 2
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 1
+push constant 7
+push constant 7
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 0
+push constant 49
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 1
+push constant 40
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 2
+push constant 21
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 3
+push constant 13
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 4
+push constant 14
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 5
+push constant 22
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 6
+push constant 35
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 2
+push constant 7
+push constant 52
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 0
+push constant 48
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 1
+push constant 32
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 2
+push constant 20
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 3
+push constant 0
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 4
+push constant 0
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 5
+push constant 15
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 6
+push constant 27
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 3
+push constant 7
+push constant 43
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 0
+push constant 47
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 1
+push constant 31
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 2
+push constant 19
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 3
+push constant 0
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 4
+push constant 0
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 5
+push constant 16
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 6
+push constant 28
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 4
+push constant 7
+push constant 44
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 0
+push constant 56
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 1
+push constant 39
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 2
+push constant 24
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 3
+push constant 18
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 4
+push constant 17
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 5
+push constant 23
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 6
+push constant 36
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 5
+push constant 7
+push constant 53
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 0
+push constant 9
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 1
+push constant 3
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 2
+push constant 38
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 3
+push constant 30
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 4
+push constant 29
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 5
+push constant 37
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 6
+push constant 4
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 6
+push constant 7
+push constant 11
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 0
+push constant 59
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 1
+push constant 10
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 2
+push constant 55
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 3
+push constant 46
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 4
+push constant 45
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 5
+push constant 54
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 6
+push constant 12
+call Board.setWeight 4
+pop temp 0
+push this 0
+push constant 7
+push constant 7
+push constant 60
+call Board.setWeight 4
+pop temp 0
+push constant 0
+return
+function BoardGame.setChessman 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 1
+push argument 2
+push argument 3
+call Board.putting 4
+pop temp 0
+push constant 0
+return
+function BoardGame.setAvailable 8
+push argument 0
+pop pointer 0
+push constant 8
+call Array.new 1
+pop local 0
+push constant 0
+push local 0
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 0
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 0
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 0
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 0
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+pop local 5
+label WHILE_EXP0
+push local 5
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 6
+label WHILE_EXP1
+push local 6
+push constant 8
+lt
+not
+if-goto WHILE_END1
+push this 0
+push local 5
+push local 6
+call Board.makeGridUnavailable 3
+pop temp 0
+push local 6
+push constant 1
+add
+pop local 6
+goto WHILE_EXP1
+label WHILE_END1
+push local 5
+push constant 1
+add
+pop local 5
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop this 3
+push constant 0
+pop this 4
+push constant 0
+pop local 5
+label WHILE_EXP2
+push local 5
+push constant 8
+lt
+not
+if-goto WHILE_END2
+push constant 0
+pop local 6
+label WHILE_EXP3
+push local 6
+push constant 8
+lt
+not
+if-goto WHILE_END3
+push this 0
+push local 5
+push local 6
+call Board.getGrid 3
+pop local 7
+push local 7
+call Grid.status 1
+push argument 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop local 2
+label WHILE_EXP4
+push local 2
+push constant 8
+lt
+not
+if-goto WHILE_END4
+push local 5
+push local 2
+push local 0
+add
+pop pointer 1
+push that 0
+add
+pop local 3
+push local 6
+push local 2
+push local 1
+add
+pop pointer 1
+push that 0
+add
+pop local 4
+push local 3
+push local 4
+call BoardGame.in 2
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+push local 3
+push local 4
+call Board.getGrid 3
+pop local 7
+push local 7
+call Grid.status 1
+push argument 1
+neg
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+label WHILE_EXP5
+push local 3
+push local 4
+call BoardGame.in 2
+push local 7
+call Grid.status 1
+push argument 1
+neg
+eq
+and
+not
+if-goto WHILE_END5
+push local 3
+push local 2
+push local 0
+add
+pop pointer 1
+push that 0
+add
+pop local 3
+push local 4
+push local 2
+push local 1
+add
+pop pointer 1
+push that 0
+add
+pop local 4
+push local 3
+push local 4
+call BoardGame.in 2
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 0
+push local 3
+push local 4
+call Board.getGrid 3
+pop local 7
+label IF_FALSE3
+goto WHILE_EXP5
+label WHILE_END5
+push local 3
+push local 4
+call BoardGame.in 2
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 7
+call Grid.status 1
+push constant 0
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push this 0
+push local 3
+push local 4
+push local 7
+call Board.makeGridAvailable 4
+pop temp 0
+push argument 1
+push constant 1
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push this 4
+push constant 1
+add
+pop this 4
+label IF_FALSE6
+push argument 1
+push constant 1
+neg
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push this 3
+push constant 1
+add
+pop this 3
+label IF_FALSE7
+label IF_FALSE5
+label IF_FALSE4
+label IF_FALSE2
+label IF_FALSE1
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP4
+label WHILE_END4
+label IF_FALSE0
+push local 6
+push constant 1
+add
+pop local 6
+goto WHILE_EXP3
+label WHILE_END3
+push local 5
+push constant 1
+add
+pop local 5
+goto WHILE_EXP2
+label WHILE_END2
+push local 0
+call Array.dispose 1
+pop temp 0
+push local 1
+call Array.dispose 1
+pop temp 0
+push constant 0
+return
+function BoardGame.changeChessman 6
+push argument 0
+pop pointer 0
+push constant 8
+call Array.new 1
+pop local 0
+push constant 0
+push local 0
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 0
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 0
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 0
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 0
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 8
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push local 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 4
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push local 1
+add
+push constant 1
+neg
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push local 1
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push local 1
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+pop local 2
+label WHILE_EXP0
+push local 2
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push local 2
+push local 0
+add
+pop pointer 1
+push that 0
+add
+pop local 3
+push argument 2
+push local 2
+push local 1
+add
+pop pointer 1
+push that 0
+add
+pop local 4
+push local 3
+push local 4
+call BoardGame.in 2
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push local 3
+push local 4
+call Board.getGrid 3
+pop local 5
+push local 5
+call Grid.status 1
+push argument 3
+neg
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+label WHILE_EXP1
+push local 3
+push local 4
+call BoardGame.in 2
+push local 5
+call Grid.status 1
+push argument 3
+neg
+eq
+and
+not
+if-goto WHILE_END1
+push local 3
+push local 2
+push local 0
+add
+pop pointer 1
+push that 0
+add
+pop local 3
+push local 4
+push local 2
+push local 1
+add
+pop pointer 1
+push that 0
+add
+pop local 4
+push local 3
+push local 4
+call BoardGame.in 2
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+push local 3
+push local 4
+call Board.getGrid 3
+pop local 5
+label IF_FALSE2
+goto WHILE_EXP1
+label WHILE_END1
+push local 3
+push local 4
+call BoardGame.in 2
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 5
+call Grid.status 1
+push argument 3
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 3
+push local 2
+push local 0
+add
+pop pointer 1
+push that 0
+sub
+pop local 3
+push local 4
+push local 2
+push local 1
+add
+pop pointer 1
+push that 0
+sub
+pop local 4
+label WHILE_EXP2
+push local 3
+push argument 1
+eq
+push local 4
+push argument 2
+eq
+and
+not
+not
+if-goto WHILE_END2
+push this 0
+push local 3
+push local 4
+call Board.changing 3
+pop temp 0
+push local 3
+push local 2
+push local 0
+add
+pop pointer 1
+push that 0
+sub
+pop local 3
+push local 4
+push local 2
+push local 1
+add
+pop pointer 1
+push that 0
+sub
+pop local 4
+goto WHILE_EXP2
+label WHILE_END2
+label IF_FALSE4
+label IF_FALSE3
+label IF_FALSE1
+label IF_FALSE0
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+call Array.dispose 1
+pop temp 0
+push local 1
+call Array.dispose 1
+pop temp 0
+push constant 0
+return
+function BoardGame.count_score 5
+push argument 0
+pop pointer 0
+push constant 0
+pop local 2
+push constant 0
+pop local 3
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 1
+label WHILE_EXP1
+push local 1
+push constant 8
+lt
+not
+if-goto WHILE_END1
+push this 0
+push local 0
+push local 1
+call Board.getGrid 3
+pop local 4
+push local 4
+call Grid.status 1
+push constant 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 3
+push constant 1
+add
+pop local 3
+label IF_FALSE0
+push local 4
+call Grid.status 1
+push constant 1
+neg
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 2
+push constant 1
+add
+pop local 2
+label IF_FALSE1
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push this 1
+push local 2
+push local 3
+call Scoreboard.changeScore 3
+pop temp 0
+push constant 0
+return
+function BoardGame.AI 7
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 2
+push constant 0
+pop local 4
+push constant 0
+pop local 5
+label WHILE_EXP0
+push local 2
+push constant 8
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 3
+label WHILE_EXP1
+push local 3
+push constant 8
+lt
+not
+if-goto WHILE_END1
+push this 0
+push local 2
+push local 3
+call Board.getGrid 3
+pop local 6
+push local 6
+call Grid.weight 1
+push local 6
+call Grid.available 1
+neg
+call Math.multiply 2
+pop local 1
+push local 0
+push local 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+pop local 0
+push local 2
+pop local 4
+push local 3
+pop local 5
+label IF_FALSE0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+push constant 8
+push local 4
+call Math.multiply 2
+push local 5
+add
+return
+function BoardGame.printGame 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 1
+call Board.printBoard 2
+pop temp 0
+push this 1
+push argument 1
+push argument 2
+call Scoreboard.print_scoreBoard 3
+pop temp 0
+push this 2
+call Select.printSelect 1
+pop temp 0
+push constant 0
+return
+function BoardGame.blackAvailable 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function BoardGame.whiteAvailable 0
+push argument 0
+pop pointer 0
+push this 4
+return
+function BoardGame.readGrid 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 1
+push argument 2
+call Board.getGrid 3
+return
+function BoardGame.readBlack 0
+push argument 0
+pop pointer 0
+push this 1
+call Scoreboard.black_score 1
+return
+function BoardGame.readWhite 0
+push argument 0
+pop pointer 0
+push this 1
+call Scoreboard.white_score 1
+return
+function BoardGame.readSelect 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function BoardGame.writeSelect 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 2
+push constant 0
+return
+function BoardGame.getX 0
+push argument 0
+pop pointer 0
+push this 2
+call Select.readX 1
+return
+function BoardGame.getY 0
+push argument 0
+pop pointer 0
+push this 2
+call Select.readY 1
+return
+function BoardGame.setCoordinate 0
+push argument 0
+pop pointer 0
+push this 2
+push argument 1
+push argument 2
+call Select.changeCoordinate 3
+pop temp 0
+push constant 0
+return
+function BoardGame.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

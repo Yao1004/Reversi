@@ -1,0 +1,54 @@
+class Grid
+{
+	field int status; 	   // -1 for black, 0 for vacant, 1 for white
+	field boolean available ; // if player could choose the grid
+	field int weight ;  // for AI strategy
+	constructor Grid new ()
+	{
+		let status = 0;
+		let available = false;
+		return this;
+	}
+	method void place (int goal)
+	{
+		let status = goal;
+		return;
+	} 
+	method void reverse ()
+	{
+		let status = status * (-1);
+		return;
+	}
+	method void writeWeight (int w)
+	{
+		let weight = w;
+		return;
+	}
+	method void makeAvailable ()
+	{
+		let available = true;
+		return;
+	}
+	method void makeUnavailable ()
+	{
+		let available = false;
+		return;
+	}
+	method int status() 
+	{
+        return status;
+    }
+	method boolean available() 
+	{
+        return available;
+    }
+	method int weight()
+	{
+		return weight;
+	}
+	method void dispose()
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
