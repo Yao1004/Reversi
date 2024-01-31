@@ -16,6 +16,9 @@ Moreover, there are also AI v.s. Player mode, the AI would put chessman accordin
 ## Usage
 Download the kit provided by [nand2tetris](https://www.nand2tetris.org/software), and execute Code/Reversi_vm/Main.vm with VM Emulator.
 
+Use arrow key to change the position of the target, and use enter to put chessman.
+
 ## Demo
 [Demo for Playing](https://youtu.be/-BovabkGDrY)
+
 [Demo for Mode Selection](https://youtu.be/8J-VYqjrdsI)
