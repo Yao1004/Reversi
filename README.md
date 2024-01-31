@@ -20,5 +20,3 @@ Use arrow key to change the position of the target, and use enter to put chessma
 
 ## Demo
 [Demo for Playing](https://youtu.be/-BovabkGDrY)
-
-[Demo for Mode Selection](https://youtu.be/8J-VYqjrdsI)
