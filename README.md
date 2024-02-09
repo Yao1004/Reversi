@@ -1,3 +1,7 @@
+## Author
+
+張閔堯、李冠誼(Department of Computer Science and Information Technology, National Taiwan University)
+
 ## Overview
 
 This is Final Project for Introduction to Computer Science, I took this course in 2022 Fall.
